@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fundo preto */
+            color: white; /* Texto branco */
+            position: relative; /* Para posicionar a imagem */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .background-image {
+            position: absolute;
+            top: 50%;
+            left: 20%; /* Um pouco para a esquerda */
+            transform: translate(-50%, -50%);
+            opacity: 0.3; /* Estilização com transparência */
+            z-index: -1; /* Para ficar atrás dos botões */
+            max-width: 80%; /* Ajuste de tamanho */
+        }
+        .image-overlay-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 20%; /* Gradiente cobrindo a borda esquerda */
+            background: linear-gradient(to right, #000, transparent); /* Gradiente preto para transparente */
+            z-index: -1; /* Atrás dos botões */
+        }
+        .image-overlay-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 20%; /* Gradiente cobrindo a borda direita */
+            background: linear-gradient(to left, #000, transparent); /* Gradiente preto para transparente */
+            z-index: -1; /* Atrás dos botões */
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #FFC107; /* Cor amarela para contraste */
+            color: black; /* Texto preto para contraste */
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #E0A800; /* Tom mais escuro ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo</h1> <!-- Título centralizado -->
+    <div class="image-overlay-left"></div> <!-- Gradiente na borda esquerda -->
+    <div class="image-overlay-right"></div> <!-- Gradiente na borda direita -->
+    <img src="https://transportemundial.com.br/wp-content/uploads/2017/04/urbanos-bus.jpg" alt="Imagem de fundo" class="background-image"> <!-- Espaço para a imagem -->
+    <div class="button-container">
+        <button onclick="window.location.href='login-motorista.html'">Login Motorista</button>
+        <button onclick="window.location.href='login-passageiro.html'">Login Passageiro</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
