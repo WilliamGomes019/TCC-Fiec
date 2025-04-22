@@ -45,6 +45,7 @@ function openLogin(type) {
     submitButton.style.cursor = 'pointer';
     form.appendChild(submitButton);
 
+    // Adicionando persistência de login usando localStorage
     form.onsubmit = (event) => {
         event.preventDefault();
 
@@ -56,6 +57,8 @@ function openLogin(type) {
         const validPassword = '1234';
 
         if (username === validUsername && password === validPassword) {
+            // Salva o estado de login no localStorage
+            localStorage.setItem('isLoggedIn', 'true');
             // Redirect to restricted area on successful login
             window.location.href = 'area-restrita.html';
         } else {

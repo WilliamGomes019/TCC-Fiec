@@ -27,10 +27,14 @@
     </main>
     <script>
         // Verifica se o usuário está autenticado
-        if (!sessionStorage.getItem('isLoggedIn')) {
-            alert('Você precisa fazer login para acessar esta página.');
-            window.location.href = 'entrar.html';
-        }
+        window.onload = () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (isLoggedIn !== 'true') {
+                // Redireciona para a página de login se não estiver autenticado
+                window.location.href = 'entrar.html';
+            }
+        };
     </script>
 </body>
 </html>

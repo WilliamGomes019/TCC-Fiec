@@ -34,3 +34,99 @@ h1 {
     background-color: gray; 
 }
 
+/* Estilização específica para a página area-restrita.html */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+}
+
+.navbar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1rem;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #00bcd4;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.rotas {
+    background: linear-gradient(135deg, #333, #555);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #666;
+}
+
+.rotas h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #00bcd4;
+    text-shadow: 1px 1px 2px black;
+}
+
+.rotas-container {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    resize: none;
+    font-size: 1rem;
+    background-color: #222;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00bcd4;
+}
+
+button {
+    background-color: #00bcd4;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #008c9e;
+    transform: scale(1.05);
+}
+
