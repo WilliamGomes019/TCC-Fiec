@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Restrita</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="rotas">
+            <h1>Rotas dos Ônibus</h1>
+            <div class="rotas-container">
+                <p>Aqui você pode visualizar as rotas disponíveis dos ônibus.</p>
+                <textarea placeholder="Insira as rotas aqui..." rows="10" cols="50"></textarea>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Verifica se o usuário está autenticado
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            alert('Você precisa fazer login para acessar esta página.');
+            window.location.href = 'entrar.html';
+        }
+    </script>
+</body>
+</html>
