@@ -1,16 +1,16 @@
-/* DEBUG: CSS contato carregado */
+/* DEBUG: CSS área restrita carregado */
 /* Estilização global para todas as páginas */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
-    color: #333;
+    color: white;
     line-height: 1.6;
 }
 
 header {
-    background-color: #0078d7;
-    color: white;
+    background-color: gray;
+    color: black;
     padding: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -41,7 +41,7 @@ header nav {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
@@ -49,7 +49,7 @@ header nav {
 }
 
 .navbar a:hover {
-    background-color: #005bb5;
+    background-color: gray ;
     color: #fff;
 }
 
@@ -57,17 +57,17 @@ main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background: white;
+    background: gray;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
-    color: #0078d7;
+    color: black;
 }
 
 button {
-    background-color: #0078d7;
+    background-color: gray;
     color: white;
     font-weight: bold;
     padding: 10px 20px;
@@ -78,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #005bb5;
+    background-color: gray;
     transform: scale(1.05);
 }
 
@@ -95,7 +95,7 @@ footer {
 /* Ajustes no modo escuro */
 body.dark-mode {
     background-color: #121212;
-    color: #ffffff;
+    color: black;
 }
 
 header.dark-mode {
@@ -114,11 +114,86 @@ header.dark-mode {
 
 main.dark-mode {
     background: #1e1e1e;
-    color: #ffffff;
+    color: black;
 }
 
 footer.dark-mode {
     background-color: #1e1e1e;
-    color: #ffffff;
+    color: black;
+}
+
+
+
+/* Estilização do formulário de contato */
+.formulario-contato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+}
+
+.formulario-contato h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: black;
+    text-align: center;
+}
+
+.formulario-contato form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-contato label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-contato input:focus,
+.formulario-contato textarea:focus {
+    outline: none;
+    border-color: #0078d7;
+    box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
+}
+
+.formulario-contato button {
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formulario-contato button:hover {
+    background-color: black;
+    transform: scale(1.05);
+}
+
+.formulario-contato button:active {
+    transform: scale(0.95);
 }
 

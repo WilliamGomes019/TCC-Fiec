@@ -5,7 +5,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000; /* Fundo preto */
+    background-color: gray; /* Fundo preto */
     color: white; /* Texto branco */
 }
 .form-container {
@@ -28,13 +28,13 @@ body {
     border-radius: 5px;
 }
 .form-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: white; /* Tom mais escuro */
+    width: 90%; /* Reduzido de 100% para 90% */
+    padding: 8px; /* Reduzido de 10px para 8px */
+    background-color: white;
     border: none;
     border-radius: 5px;
     color: black;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduzido de 1rem para 0.9rem */
     cursor: pointer;
 }
 .form-container button:hover {

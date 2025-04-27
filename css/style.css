@@ -1,23 +1,27 @@
+/* Ajuste para permitir rolagem na página */
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    display: block; /* Alterado de flex para block */
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000; 
-    color: white; 
-    position: relative; 
+    background-color: #000;
+    color: white;
+    position: relative;
+    min-height: 100vh; /* Garante altura mínima */
+    overflow-y: auto; /* Permite rolagem vertical */
 }
+
 h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: white;
 }
 
 .button-container {
     text-align: center;
+    margin-top: 50px; /* Adicionado espaçamento superior */
 }
+
 .button-container button {
     margin: 10px;
     padding: 10px 25px;
@@ -25,11 +29,12 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: white; 
+    background-color: gray; 
     color: black;
     transition: background-color 0.3s ease;
     border-radius: 10px;
 }
+
 .button-container button:hover {
     background-color: gray; 
 }
@@ -131,5 +136,20 @@ button {
 button:hover {
     background-color: #008c9e;
     transform: scale(1.05);
+}
+
+/* Ajuste do tamanho do carousel */
+.carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-container img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 

@@ -4,13 +4,13 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
-    color: #333;
+    color: white;
     line-height: 1.6;
 }
 
 header {
-    background-color: #0078d7;
-    color: white;
+    background-color: gray;
+    color: black;
     padding: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -41,7 +41,7 @@ header nav {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 5px;
@@ -49,7 +49,7 @@ header nav {
 }
 
 .navbar a:hover {
-    background-color: #005bb5;
+    background-color: gray ;
     color: #fff;
 }
 
@@ -57,17 +57,17 @@ main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background: white;
+    background: gray;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
-    color: #0078d7;
+    color: black;
 }
 
 button {
-    background-color: #0078d7;
+    background-color: gray;
     color: white;
     font-weight: bold;
     padding: 10px 20px;
@@ -78,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #005bb5;
+    background-color: gray;
     transform: scale(1.05);
 }
 
@@ -95,7 +95,7 @@ footer {
 /* Ajustes no modo escuro */
 body.dark-mode {
     background-color: #121212;
-    color: #ffffff;
+    color: black;
 }
 
 header.dark-mode {
@@ -114,11 +114,88 @@ header.dark-mode {
 
 main.dark-mode {
     background: #1e1e1e;
-    color: #ffffff;
+    color: black;
 }
 
 footer.dark-mode {
     background-color: #1e1e1e;
-    color: #ffffff;
+    color: black;
+}
+
+/* Estilos para a seção de rotas */
+.rotas {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.rotas-container {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#add-route-form {
+    margin-bottom: 20px;
+}
+
+#add-route-form input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#add-route-form button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#routes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#routes-table th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: black;
+    color: white;
+}
+
+#routes-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.mapa-rotas {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.mapa-rotas iframe {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* Estilo melhorado para o input de filtrar rotas */
+#filtro-rotas {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 2px solid #0078d7;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#filtro-rotas:focus {
+    outline: none;
+    border-color: #005bb5;
+    box-shadow: 0 0 8px rgba(0, 91, 181, 0.5);
 }
 
