@@ -1,4 +1,4 @@
-/* DEBUG: CSS sobre carregado */
+/* DEBUG: CSS área restrita carregado */
 /* Estilização global para todas as páginas */
 body {
     margin: 0;
@@ -113,7 +113,7 @@ header.dark-mode {
 }
 
 main.dark-mode {
-    background: black;
+    background: #1e1e1e;
     color: #ffffff;
 }
 

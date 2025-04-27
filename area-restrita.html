@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área Restrita</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/area-restrita.css">
 </head>
 <body>
     <header>
         <nav>
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="area-restrita.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
+            <button id="dark-mode-toggle">Modo Escuro</button>
         </nav>
     </header>
     <main>
@@ -40,13 +41,12 @@
             </ul>
         </section>
     </main>
+    <script src="scripts/area-restrita.js"></script>
     <script>
-        // Verifica se o usuário está autenticado
         window.onload = () => {
             const isLoggedIn = localStorage.getItem('isLoggedIn');
 
             if (isLoggedIn !== 'true') {
-                // Redireciona para a página de login se não estiver autenticado
                 window.location.href = 'entrar.html';
             }
         };
