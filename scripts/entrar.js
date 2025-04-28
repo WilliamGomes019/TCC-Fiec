@@ -16,8 +16,10 @@ function openLogin(type) {
     loginWindow.appendChild(title);
 
     const form = document.createElement('form');
+    form.id = 'login-form';
     const userInput = document.createElement('input');
     userInput.type = 'text';
+    userInput.id = 'username';
     userInput.placeholder = 'Usuário';
     userInput.style.margin = '10px 0';
     userInput.style.padding = '10px';
@@ -27,12 +29,23 @@ function openLogin(type) {
 
     const passwordInput = document.createElement('input');
     passwordInput.type = 'password';
+    passwordInput.id = 'password';
     passwordInput.placeholder = 'Senha';
     passwordInput.style.margin = '10px 0';
     passwordInput.style.padding = '10px';
     passwordInput.style.width = '100%';
     passwordInput.style.borderRadius = '5px';
     form.appendChild(passwordInput);
+
+    const rememberMeLabel = document.createElement('label');
+    rememberMeLabel.style.display = 'block';
+    rememberMeLabel.style.margin = '10px 0';
+    const rememberMeCheckbox = document.createElement('input');
+    rememberMeCheckbox.type = 'checkbox';
+    rememberMeCheckbox.id = 'remember-me';
+    rememberMeLabel.appendChild(rememberMeCheckbox);
+    rememberMeLabel.appendChild(document.createTextNode('Lembrar de mim'));
+    form.appendChild(rememberMeLabel);
 
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
@@ -44,28 +57,6 @@ function openLogin(type) {
     submitButton.style.borderRadius = '5px';
     submitButton.style.cursor = 'pointer';
     form.appendChild(submitButton);
-
-    // Adicionando persistência de login usando localStorage
-    form.onsubmit = (event) => {
-        event.preventDefault();
-
-        const username = userInput.value;
-        const password = passwordInput.value;
-
-        // Define the specific login credentials
-        const validUsername = 'admin';
-        const validPassword = '1234';
-
-        if (username === validUsername && password === validPassword) {
-            // Salva o estado de login no localStorage
-            localStorage.setItem('isLoggedIn', 'true');
-            // Redirect to restricted area on successful login
-            window.location.href = 'area-restrita.html';
-        } else {
-            // Show error message for invalid credentials
-            alert('Usuário ou senha inválidos. Tente novamente.');
-        }
-    };
 
     loginWindow.appendChild(form);
 
@@ -82,3 +73,52 @@ function openLogin(type) {
 
     document.body.appendChild(loginWindow);
 }
+
+function recoverPassword() {
+    const email = prompt("Por favor, insira seu e-mail para recuperação de senha:");
+    if (email) {
+        alert(`Um link de recuperação foi enviado para o e-mail: ${email}`);
+        // Aqui você pode adicionar lógica para enviar o e-mail ao servidor
+    } else {
+        alert("E-mail não fornecido. Tente novamente.");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.querySelector('#login-form');
+    const rememberMeCheckbox = document.getElementById('remember-me');
+
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!username || !password) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        if (rememberMeCheckbox.checked) {
+            localStorage.setItem('rememberedUser', username);
+        }
+
+        alert('Login bem-sucedido!');
+        window.location.href = 'area-restrita.html';
+    });
+
+    const rememberedUser = localStorage.getItem('rememberedUser');
+    if (rememberedUser) {
+        document.getElementById('username').value = rememberedUser;
+        rememberMeCheckbox.checked = true;
+    }
+
+    const logoutButton = document.getElementById('logout-button');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            alert('Você foi desconectado.');
+            window.location.href = 'index.html';
+        });
+    }
+});

@@ -150,9 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function addRouteToTable(route) {
         const newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td style="padding: 10px; border: 1px solid #ccc;">${route.routeName}</td>
+            <td class="route-name" style="padding: 10px; border: 1px solid #ccc;">${route.routeName}</td>
             <td style="padding: 10px; border: 1px solid #ccc;">${route.departureTime}</td>
             <td style="padding: 10px; border: 1px solid #ccc;">${route.arrivalTime}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">
+                <button class="edit-route">Editar</button>
+                <button class="delete-route">Excluir</button>
+            </td>
         `;
 
         routesTableBody.appendChild(newRow);
@@ -207,6 +211,54 @@ document.addEventListener('DOMContentLoaded', () => {
             const routesTableBody = document.querySelector('#routes-table tbody');
             routesTableBody.innerHTML = '';
             localStorage.removeItem('busRoutes');
+        }
+    });
+
+    routesTableBody.addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete-route')) {
+            const row = event.target.closest('tr');
+            row.remove();
+            alert('Rota excluída com sucesso!');
+        }
+
+        if (event.target.classList.contains('edit-route')) {
+            const row = event.target.closest('tr');
+            const routeName = row.querySelector('.route-name');
+            const newName = prompt('Editar nome da rota:', routeName.textContent);
+
+            if (newName) {
+                routeName.textContent = newName;
+                alert('Rota editada com sucesso!');
+            }
+        }
+    });
+
+    routesTableBody.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON' && event.target.classList.contains('edit-route')) {
+            const row = event.target.closest('tr');
+            const routeNameCell = row.cells[0];
+            const departureTimeCell = row.cells[1];
+            const arrivalTimeCell = row.cells[2];
+
+            const newRouteName = prompt('Editar nome da rota:', routeNameCell.textContent);
+            const newDepartureTime = prompt('Editar horário de partida:', departureTimeCell.textContent);
+            const newArrivalTime = prompt('Editar horário de chegada:', arrivalTimeCell.textContent);
+
+            if (newRouteName && newDepartureTime && newArrivalTime) {
+                routeNameCell.textContent = newRouteName;
+                departureTimeCell.textContent = newDepartureTime;
+                arrivalTimeCell.textContent = newArrivalTime;
+
+                // Update localStorage
+                const savedRoutes = JSON.parse(localStorage.getItem('busRoutes')) || [];
+                const routeIndex = Array.from(routesTableBody.rows).indexOf(row);
+                savedRoutes[routeIndex] = {
+                    routeName: newRouteName,
+                    departureTime: newDepartureTime,
+                    arrivalTime: newArrivalTime
+                };
+                localStorage.setItem('busRoutes', JSON.stringify(savedRoutes));
+            }
         }
     });
 });

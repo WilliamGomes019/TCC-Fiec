@@ -49,11 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     form.addEventListener('submit', (event) => {
-        if (!confirm('Tem certeza de que deseja enviar esta mensagem?')) {
-            event.preventDefault();
-            return;
-        }
-
         event.preventDefault();
 
         const nome = document.getElementById('nome').value.trim();
@@ -70,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        feedback.textContent = 'Enviando mensagem...';
+        feedback.style.display = 'block';
+
         const spinner = document.createElement('div');
         spinner.classList.add('spinner');
         spinner.textContent = 'Enviando...';
@@ -77,8 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             spinner.remove();
-            feedback.style.display = 'block';
-            alert('Mensagem enviada com sucesso!');
+            feedback.textContent = 'Mensagem enviada com sucesso!';
             form.reset();
             localStorage.removeItem('contactFormData');
         }, 2000); // Simulate a 2-second submission delay
