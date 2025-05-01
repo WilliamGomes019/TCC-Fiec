@@ -99,18 +99,28 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (rememberMeCheckbox.checked) {
-            localStorage.setItem('rememberedUser', username);
-        }
+        // Validate credentials
+        if (username === 'admin' && password === '1234') {
+            if (rememberMeCheckbox && rememberMeCheckbox.checked) {
+                localStorage.setItem('rememberedUser', username);
+            }
 
-        alert('Login bem-sucedido!');
-        window.location.href = 'area-restrita.html';
+            alert('Login bem-sucedido!');
+            window.location.replace('area-restrita.html'); // Use replace to avoid keeping entrar.html in history
+        } else {
+            alert('Usuário ou senha inválidos.');
+        }
     });
 
     const rememberedUser = localStorage.getItem('rememberedUser');
     if (rememberedUser) {
-        document.getElementById('username').value = rememberedUser;
-        rememberMeCheckbox.checked = true;
+        const usernameField = document.getElementById('username');
+        if (usernameField) {
+            usernameField.value = rememberedUser;
+        }
+        if (rememberMeCheckbox) {
+            rememberMeCheckbox.checked = true;
+        }
     }
 
     const logoutButton = document.getElementById('logout-button');
@@ -118,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutButton.addEventListener('click', () => {
             localStorage.removeItem('isLoggedIn');
             alert('Você foi desconectado.');
-            window.location.href = 'index.html';
+            window.location.replace('index.html');
         });
     }
 });
