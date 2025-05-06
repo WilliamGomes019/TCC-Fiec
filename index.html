@@ -11,7 +11,7 @@
     <div class="button-container">
         <button onclick="window.location.href='login-motorista.html'">Cadastro Motorista</button>
         <button onclick="window.location.href='login-passageiro.html'">Cadastro Passageiro</button>
-        <button onclick="window.location.href='entrar.html'">Já possui cadastro?</button>
+        <button onclick="showLoginOptions()">Já possui cadastro?</button>
     </div>
 
     <main>
@@ -47,6 +47,67 @@
             </div>
         </section>
     </main>
+    <script>
+        function showLoginOptions() {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.style.position = 'fixed';
+            optionsDiv.style.top = '50%';
+            optionsDiv.style.left = '50%';
+            optionsDiv.style.transform = 'translate(-50%, -50%)';
+            optionsDiv.style.backgroundColor = '#333';
+            optionsDiv.style.color = '#fff';
+            optionsDiv.style.padding = '20px';
+            optionsDiv.style.borderRadius = '10px';
+            optionsDiv.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            optionsDiv.style.textAlign = 'center';
+
+            const title = document.createElement('h2');
+            title.textContent = 'Escolha o tipo de login';
+            optionsDiv.appendChild(title);
+
+            const motoristaButton = document.createElement('button');
+            motoristaButton.textContent = 'Login Motorista';
+            motoristaButton.style.margin = '10px';
+            motoristaButton.style.padding = '10px 20px';
+            motoristaButton.style.backgroundColor = 'gray';
+            motoristaButton.style.color = 'black';
+            motoristaButton.style.border = 'none';
+            motoristaButton.style.borderRadius = '5px';
+            motoristaButton.style.cursor = 'pointer';
+            motoristaButton.onclick = () => {
+                window.location.href = 'login-motorista.html';
+            };
+            optionsDiv.appendChild(motoristaButton);
+
+            const passageiroButton = document.createElement('button');
+            passageiroButton.textContent = 'Login Passageiro';
+            passageiroButton.style.margin = '10px';
+            passageiroButton.style.padding = '10px 20px';
+            passageiroButton.style.backgroundColor = 'gray';
+            passageiroButton.style.color = 'black';
+            passageiroButton.style.border = 'none';
+            passageiroButton.style.borderRadius = '5px';
+            passageiroButton.style.cursor = 'pointer';
+            passageiroButton.onclick = () => {
+                window.location.href = 'login-passageiro.html';
+            };
+            optionsDiv.appendChild(passageiroButton);
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Fechar';
+            closeButton.style.marginTop = '10px';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.backgroundColor = '#555';
+            closeButton.style.color = '#fff';
+            closeButton.style.border = 'none';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.onclick = () => document.body.removeChild(optionsDiv);
+            optionsDiv.appendChild(closeButton);
+
+            document.body.appendChild(optionsDiv);
+        }
+    </script>
     <script src="script.js"></script>
     <script src="scripts/index.js"></script>
 </body>

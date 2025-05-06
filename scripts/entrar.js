@@ -17,6 +17,7 @@ function openLogin(type) {
 
     const form = document.createElement('form');
     form.id = 'login-form';
+
     const userInput = document.createElement('input');
     userInput.type = 'text';
     userInput.id = 'username';
@@ -52,7 +53,7 @@ function openLogin(type) {
     submitButton.textContent = 'Entrar';
     submitButton.style.marginTop = '10px';
     submitButton.style.padding = '10px 20px';
-    submitButton.style.backgroundColor = '#fffff';
+    submitButton.style.backgroundColor = '#fff';
     submitButton.style.border = 'none';
     submitButton.style.borderRadius = '5px';
     submitButton.style.cursor = 'pointer';
@@ -64,7 +65,7 @@ function openLogin(type) {
     closeButton.textContent = 'Fechar';
     closeButton.style.marginTop = '10px';
     closeButton.style.padding = '10px 20px';
-    closeButton.style.backgroundColor = '#fffff';
+    closeButton.style.backgroundColor = '#fff';
     closeButton.style.border = 'none';
     closeButton.style.borderRadius = '5px';
     closeButton.style.cursor = 'pointer';
@@ -72,6 +73,44 @@ function openLogin(type) {
     loginWindow.appendChild(closeButton);
 
     document.body.appendChild(loginWindow);
+
+    // Adiciona o listener do formulário após inseri-lo no DOM
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const rememberMe = document.getElementById('remember-me');
+
+        if (!username || !password) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Simula validação de credenciais
+        if ((username === 'admin' && password === '1234') || (username === 'admin' && password === '123456')) {
+            if (rememberMe && rememberMe.checked) {
+                localStorage.setItem('rememberedUser', username);
+            }
+            localStorage.setItem('isLoggedIn', 'true');
+            alert('Login bem-sucedido!');
+            window.location.href = 'area-restrita.html';
+        } else {
+            alert('Credenciais inválidas.');
+        }
+    });
+
+    // Preenche o campo usuário se já foi lembrado
+    const rememberedUser = localStorage.getItem('rememberedUser');
+    if (rememberedUser) {
+        const usernameField = document.getElementById('username');
+        if (usernameField) {
+            usernameField.value = rememberedUser;
+        }
+        if (rememberMeCheckbox) {
+            rememberMeCheckbox.checked = true;
+        }
+    }
 }
 
 function recoverPassword() {
@@ -85,44 +124,12 @@ function recoverPassword() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.querySelector('#login-form');
-    const rememberMeCheckbox = document.getElementById('remember-me');
-
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-
-        if (!username || !password) {
-            alert('Por favor, preencha todos os campos.');
-            return;
-        }
-
-        if (rememberMeCheckbox.checked) {
-            localStorage.setItem('rememberedUser', username);
-        }
-
-        if (username === 'admin' && password === '123456') {
-            localStorage.setItem('isLoggedIn', 'true');
-        }
-
-        alert('Login bem-sucedido!');
-        window.location.href = 'area-restrita.html';
-    });
-
-    const rememberedUser = localStorage.getItem('rememberedUser');
-    if (rememberedUser) {
-        document.getElementById('username').value = rememberedUser;
-        rememberMeCheckbox.checked = true;
-    }
-
     const logoutButton = document.getElementById('logout-button');
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
             localStorage.removeItem('isLoggedIn');
             alert('Você foi desconectado.');
-            window.location.href = 'index.html';
+            window.location.replace('index.html');
         });
     }
 });

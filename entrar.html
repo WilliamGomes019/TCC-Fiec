@@ -8,19 +8,23 @@
 </head>
 <body>
     <main>
-        <h1>Bem-vindo!</h1>
-        <div style="text-align: center; margin-top: 20px;">
-            <section>
-                <button onclick="openLogin('motorista')" style="margin: 10px; padding: 10px 20px; font-size: 16px;">Login Motorista</button>
-            </section>
-            <section>
-                <button onclick="openLogin('passageiro')" style="margin: 10px; padding: 10px 20px; font-size: 16px;">Login Passageiro</button>
-            </section>
-            <section>
-                <a href="#" onclick="recoverPassword()">Esqueceu sua senha?</a>
-            </section>
-        </div>
-        <script src="scripts/entrar.js"></script>
+        <section class="login-section">
+            <h1>Login</h1>
+            <form id="login-form">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+                <label>
+                    <input type="checkbox" id="remember-me"> Lembrar de mim
+                </label>
+
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
     </main>
+    <script src="scripts/entrar.js"></script>
 </body>
 </html>
