@@ -103,6 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('rememberedUser', username);
         }
 
+        if (username === 'admin' && password === '123456') {
+            localStorage.setItem('isLoggedIn', 'true');
+        }
+
         alert('Login bem-sucedido!');
         window.location.href = 'area-restrita.html';
     });
