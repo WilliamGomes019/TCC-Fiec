@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Validate credentials
         if (username === 'admin' && password === '1234') {
             alert('Login bem-sucedido!');
-            window.location.replace('area-restrita.html');
+            window.location('area-restrita.html');
         } else {
             alert('Usuário ou senha inválidos.');
         }
